@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="dubidabidei.png">
+    <title>Dubidabidei</title>
+    <style>
+        body {
+            font-family: 'Bahnschrift', sans-serif;
+            margin: 20px;
+            background-color: #D1C1AF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #2E3E50;
+        }
+        a {
+            color: #2E3E50;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        button {
+            background-color: #2E3E50;
+            color: #B2A18E;
+            border: 2px solid #2E3E50;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 1em;
+        }
+        button:hover {
+            background-color: #B2A18E;
+            color: #2E3E50;
+            border: 2px solid #2E3E50;
+        }
+    </style>
+</head>
+<body>
+	<img src="dubidabidei.svg" alt="Dubidabidei Logo" width="150" height="150">
+    <h1>Welcome to Dubidabidei</h1>
+
+    <a>How are you?</a>
+
+    <buttons id="iamm1">
+        <button onclick="iam('veryfine')">I'm very fine.</button>
+        <button onclick="iam('fine')">I'm fine.</button>
+    </buttons>
+    <buttons id="iamm2">
+        <button onclick="iam('notfine')">I'm not fine.</button>
+        <button onclick="iam('verynotfine')">I'm very not fine.</button>
+    </buttons>
+    <br>
+    <a class="iamanswer"></a>
+    <br>
+    <a class="iamresponse"></a>
+
+    <buttons id="thankss" hidden>
+        <button onclick="thanks()">Thanks.</button>
+        <button onclick="thanks('iguess')">Thanks... i guess.</button>
+    </buttons>
+    <br>
+    <a class="thanksanswer"></a>
+    <br>
+    <a class="thanksresponse"></a>
+
+
+    <footer>
+        <p style="color: #2E3E50;">&copy; 2024 Dubidabidei</p>
+    </footer>
+
+    <script>
+        function iam(state) {
+            const responseElement = document.querySelector('.iamresponse');
+            let responseText = '';
+
+            switch(state) {
+                case 'veryfine':
+                    responseText = "That's great to hear! Keep shining!";
+                    document.querySelector('.iamanswer').textContent = "I'm very fine.";
+                    break;
+                case 'fine':
+                    responseText = "Good to know you're doing fine.";
+                    document.querySelector('.iamanswer').textContent = "I'm fine.";
+                    break;
+                case 'notfine':
+                    responseText = "I'm sorry to hear that. Hope things get better soon.";
+                    document.querySelector('.iamanswer').textContent = "I'm not fine.";
+                    break;
+                case 'verynotfine':
+                    responseText = "Hang in there! Better days are ahead.";
+                    document.querySelector('.iamanswer').textContent = "I'm very not fine.";
+                    break;
+                default:
+                    responseText = "I didn't quite catch that.";
+            }
+            document.getElementById('thankss').hidden = false;
+
+            document.getElementById('iamm1').hidden = true;
+            document.getElementById('iamm2').hidden = true;
+
+            responseElement.textContent = responseText;
+        }
+
+        function thanks(type) {
+            const responseElement = document.querySelector('.thanksresponse');
+            let responseText = '';
+
+            if (type === 'iguess') {
+                responseText = "Well, you're welcome... I guess.";
+                document.querySelector('.thanksanswer').textContent = "Thanks... I guess.";
+            } else {
+                responseText = "You're welcome! Take care!";
+                document.querySelector('.thanksanswer').textContent = "Thanks.";
+            }
+
+            document.getElementById('thankss').hidden = true;
+
+            responseElement.textContent = responseText;
+        }
+    </script>
+</body>
+</html>
